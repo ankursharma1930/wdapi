@@ -1,0 +1,55 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"Indicates what fields are available at the top level of a query operation."
+type Query {
+    "Find a single user by an identifying attribute."
+    user(
+      "Search by primary key."
+      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+
+      "Search by email address."
+      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find
+
+    "List multiple users."
+    users: [User!]! @all
+   
+
+       posts: [Post!]! @all
+       post(id: Int! @eq): Post @find
+
+       me: User @auth(guard: "api")
+}
+
+"Account of a person who utilizes this application."
+type User {
+    "Unique primary key."
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    posts: [Post!]! @hasMany
+}
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  author: User! @belongsTo
+  comments: [Comment!]! @hasMany
+}
+
+type Comment {
+  id: ID!
+  reply: String!
+  post: Post! @belongsTo
+}
+
+type Mutation {
+  login(
+    email: String! 
+    password: String!
+  ): String @field(resolver: "AuthMutator@resolve")
+}
