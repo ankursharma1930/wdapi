@@ -11,7 +11,7 @@ type Query {
 
    
     users: [User!]! @all
-    me: User @auth
+    me: User @guard @auth
 }
 
 "Account of a person who utilizes this application."
@@ -31,7 +31,8 @@ type Mutation {
   login(
     email: String! 
     password: String!
-  ): String @field(resolver: "AuthMutator@resolve")
+    device: String!
+  ): String!
 
   createUser(
     name: String! 

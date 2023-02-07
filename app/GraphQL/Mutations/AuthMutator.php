@@ -14,20 +14,27 @@ final class AuthMutator
      * @param  null  $_
      * @param  array{}  $args
      */
-    public function resolve($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+
+    public function __invoke($_, array $args)
     {
-        $credentials = Arr::only($args, ['email', 'password']);
-
-        if (Auth::once($credentials)) {
-            $token = Str::random(60);
-
-            $user = auth()->user();
-            $user->api_token = $token;
-            $user->save();
-
-            return $token;
-        }
-
-        return null;
+        return "ASdas";
     }
+
+
+    // public function resolve($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+    // {
+    //     $credentials = Arr::only($args, ['email', 'password']);
+
+    //     if (Auth::once($credentials)) {
+    //         $token = Str::random(60);
+
+    //         $user = auth()->user();
+    //         $user->api_token = $token;
+    //         $user->save();
+
+    //         return $token;
+    //     }
+
+    //     return null;
+    // }
 }
