@@ -9,7 +9,13 @@ type Query {
       email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
 
-   
+   supplier(
+    id: ID @eq @rules(apply: ["prohibits:code", "required_without:code"])
+    code: String @eq @rules(apply: ["prohibits:id", "required_without:id"])
+   ): Supplier @find
+  
+    suppliers: [Supplier!]! @all
+
     users: [User!]! @all
     me: User @guard @auth
 }
@@ -26,6 +32,20 @@ type User {
     created_at: DateTime!
     updated_at: DateTime!
 }
+
+type Supplier {
+    "Unique primary key."
+    id: ID!
+    name: String
+    code: String!
+    api_id: Int
+    country: String
+    currency: String
+    postcode: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 
 type Mutation {
   login(
