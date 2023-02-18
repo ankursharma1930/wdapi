@@ -7,16 +7,16 @@ type Query {
     user(
       id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
       email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
+    ): User @find @guard
 
    supplier(
     id: ID @eq @rules(apply: ["prohibits:code", "required_without:code"])
     code: String @eq @rules(apply: ["prohibits:id", "required_without:id"])
-   ): Supplier @find
+   ): Supplier @find @guard
   
-    suppliers: [Supplier!]! @all
+    suppliers: [Supplier!]! @all  @guard 
 
-    users: [User!]! @all
+    users: [User!]! @all @guard
     me: User @guard @auth
 }
 
@@ -61,7 +61,7 @@ type Mutation {
     role: String
     access: String
     status: String
-    ): User! @create
+    ): User! @create @guard
 
     createSupplier(
     name: String 
@@ -70,13 +70,13 @@ type Mutation {
     country: String
     currency: String
     postcode: String
-    ): Supplier! @create
+    ): Supplier! @create @guard
 
-    updateUser(id: ID!, name: String, role:String, access: String, status: String): User @update
-    updateSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @update
+    updateUser(id: ID!, name: String, role:String, access: String, status: String, password: String @hash): User @update @guard
+    updateSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @update @guard
 
-    deleteUser(id: ID!): User @delete
-    deleteSupplier(id: ID!): Supplier @delete
+    deleteUser(id: ID!): User @delete @guard
+    deleteSupplier(id: ID!): Supplier @delete @guard
 
-    upsertSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @upsert
+    upsertSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @upsert @guard
 }
