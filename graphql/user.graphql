@@ -37,5 +37,5 @@ extend type Mutation {
     ): User! @create @guard
 
     updateUser(id: ID!, name: String, role:String, access: String, status: String, password: String @hash): User @update @guard
-    deleteUser(id: ID!): User @delete 
+    deleteUser(id: ID!): User @delete @guard
 }

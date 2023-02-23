@@ -3,11 +3,11 @@ extend type Query {
     category_seo(
         id: ID @eq @rules(apply: ["prohibits:category_id", "required_without:category_id"])
         category_id: String @eq @rules(apply: ["prohibits:id", "required_without:id", "category_id"])
-        ): CategorySeo @find 
+        ): CategorySeo @find @guard
 
     
-    category(id: ID!): Category @find 
-    categories: [Category!]! @all 
+    category(id: ID!): Category @find @guard
+    categories: [Category!]! @all @guard
     
     
 }
@@ -37,5 +37,5 @@ type CategorySeo{
 extend type Mutation {
     #category upsert
     
-    upsertCategorySeo(id: ID, category_id: Int!, alternat_name: String, product_keyword: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert 
+    upsertCategorySeo(id: ID, category_id: Int!, alternat_name: String, product_keyword: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert @guard
 }
