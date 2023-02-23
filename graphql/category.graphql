@@ -1,0 +1,41 @@
+extend type Query {
+
+    category_seo(
+        id: ID @eq @rules(apply: ["prohibits:category_id", "required_without:category_id"])
+        category_id: String @eq @rules(apply: ["prohibits:id", "required_without:id", "category_id"])
+        ): CategorySeo @find 
+
+    
+    category(id: ID!): Category @find 
+    categories: [Category!]! @all 
+    
+    
+}
+
+type Category{
+    id: ID!
+    name: String
+    link_to: String
+    link_filer: String
+    product_name_formula: String
+    product_name_suffix: String
+    path: String
+    parent_id: String
+}
+
+type CategorySeo{
+    id: ID!
+    category_id: Int!
+    alternat_name: String
+    product_keyword: String
+    keyword: String
+    title: String
+    meta_description: String
+
+}
+
+extend type Mutation {
+    #category upsert
+    
+    upsertCategorySeo(id: ID, category_id: Int!, alternat_name: String, product_keyword: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert 
+}

@@ -1,0 +1,41 @@
+extend type Query{
+    user(
+      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find 
+
+    users: [User!]! @all 
+    me: User @guard @auth
+}
+
+type User {
+    "Unique primary key."
+    id: ID!
+    name: String!
+    email: String!
+    role: Int
+    access: Int
+    status: Int
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Mutation {
+    login(
+    email: String! 
+    password: String!
+    device: String!
+  ): String!
+
+  createUser(
+    name: String! 
+    email: String! 
+    password: String! @hash
+    role: String
+    access: String
+    status: String
+    ): User! @create @guard
+
+    updateUser(id: ID!, name: String, role:String, access: String, status: String, password: String @hash): User @update @guard
+    deleteUser(id: ID!): User @delete 
+}

@@ -1,0 +1,38 @@
+extend type Query{
+    supplier(
+    id: ID @eq @rules(apply: ["prohibits:code", "required_without:code"])
+    code: String @eq @rules(apply: ["prohibits:id", "required_without:id"])
+   ): Supplier @find @guard
+   suppliers: [Supplier!]! @all  @guard 
+
+}
+
+type Supplier {
+    "Unique primary key."
+    id: ID!
+    name: String
+    code: String
+    api_id: String
+    country: String
+    currency: String
+    postcode: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Mutation {
+    createSupplier(
+    name: String 
+    code: String 
+    api_id: String
+    country: String
+    currency: String
+    postcode: String
+    ): Supplier! @create @guard
+
+    updateSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @update @guard
+    deleteSupplier(id: ID!): Supplier @delete @guard
+
+    upsertSupplier(id: ID!, name: String, code:String, api_id: String, country: String, currency: String, postcode:String): Supplier @upsert @guard
+
+}
