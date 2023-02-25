@@ -15,7 +15,7 @@ class CreateCategorySeosTable extends Migration
     {
         Schema::create('category_seos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
+            $table->string('category_id');
             $table->tinyText("alternat_name");
             $table->tinyText("product_keyword");
             $table->tinyText("keyword");

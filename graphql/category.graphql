@@ -1,22 +1,22 @@
 extend type Query {
 
-    category_seo(
-        id: ID @eq @rules(apply: ["prohibits:category_id", "required_without:category_id"])
-        category_id: String @eq @rules(apply: ["prohibits:id", "required_without:id", "category_id"])
-        ): CategorySeo @find @guard
+    # category_seo(
+    #     id: ID @eq @rules(apply: ["prohibits:category_id", "required_without:category_id"])
+    #     category_id: String @eq @rules(apply: ["prohibits:id", "required_without:id", "category_id"])
+    #     ): CategorySeo @find @guard
 
     
-    category(id: ID!): Category @find @guard
+    category(id: ID! @eq): Category @find @guard
     categories: [Category!]! @all @guard
     
-    
+    category_seo(category_id: String! @eq): CategorySeo @find @guard 
 }
 
 type Category{
     id: ID!
     name: String
     link_to: String
-    link_filer: String
+    link_filter: String
     product_name_formula: String
     product_name_suffix: String
     path: String
@@ -25,7 +25,7 @@ type Category{
 
 type CategorySeo{
     id: ID!
-    category_id: Int!
+    category_id: String!
     alternat_name: String
     product_keyword: String
     keyword: String
@@ -36,6 +36,8 @@ type CategorySeo{
 
 extend type Mutation {
     #category upsert
-    
+    deleteCategory(id: ID!): Category @delete @guard
+    upsertCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @upsert @guard
+    updateCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @update @guard
     upsertCategorySeo(id: ID, category_id: Int!, alternat_name: String, product_keyword: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert @guard
 }

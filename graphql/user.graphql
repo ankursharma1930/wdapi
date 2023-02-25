@@ -2,7 +2,7 @@ extend type Query{
     user(
       id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
       email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find 
+    ): User @find @guard
 
     users: [User!]! @all 
     me: User @guard @auth
