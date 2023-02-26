@@ -10,6 +10,7 @@ extend type Query {
     categories: [Category!]! @all @guard
     
     category_seo(category_id: String! @eq): CategorySeo @find @guard 
+    categoryCount: Int! @count(model: "Category")
 }
 
 type Category{

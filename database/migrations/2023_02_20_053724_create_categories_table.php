@@ -16,10 +16,10 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('link_to');
-            $table->string('link_filter');
-            $table->string('product_name_formula');
-            $table->string('product_name_suffix');
+            $table->string('link_to')->nullable();
+            $table->string('link_filter')->nullable();
+            $table->string('product_name_formula')->nullable();
+            $table->string('product_name_suffix')->nullable();
             $table->string('path');
             $table->string('parent_id');
             $table->timestamps();
