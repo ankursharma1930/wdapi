@@ -14,17 +14,26 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::truncate();
-        $csvData = fopen(base_path('database/csv/sql.csv'), 'r');
+        //Category::truncate();
+        $csvData = fopen(base_path('database/csv/category_data.csv'), 'r');
         $transRow = true;
-        while (($data = fgetcsv($csvData, 555, ',')) !== false) {
+        $item = [];
+        while (($data = fgetcsv($csvData, 555555, ',')) !== false) {
             if (!$transRow) {
-                Category::create([
-                    'id' => $data['0'],
-                    'parent_id' => $data['1'],
-                    'path' => $data['2'],
-                    'name' => $data['3']
-                ]);
+                $item['id'] = $data['0'];
+                $item['parent_id'] = $data['1'];
+                $item['path'] = $data['2'];
+                $item['name'] = $data['3'];
+                $item['link_to'] = @$data['7'];
+                $item['link_filter'] = @$data['8'];
+
+                Category::updateOrCreate(['id' => $item['id']], $item);
+                // Category::create([
+                //     //'id' => $data['0'],
+                //     'parent_id' => $data['1'],
+                //     'path' => $data['2'],
+                //     'name' => $data['3']
+                // ]);
             }
             $transRow = false;
         }

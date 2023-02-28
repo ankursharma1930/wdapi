@@ -1,6 +1,7 @@
 entity_id,parent_id,path,value
-1,0,1,Root Catalog change
-5,4,1/4/5,Clothing change
+1,0,1,Root Catalog
+4,1,1/4,Default Category
+5,4,1/4/5,Clothing
 6,4,1/4/6,Promotional Products
 7,4,1/4/7,Corporate Gifts
 8,4,1/4/8,Workwear 
@@ -44,7 +45,7 @@ entity_id,parent_id,path,value
 49,6,1/4/6/49,Stubby Holders
 50,6,1/4/6/50,Thermos
 51,6,1/4/6/51,Towels
-52,6,1/4/6/52,Reusable Coffee Cups And Travel Mugs
+52,42,1/4/6/42/52,Travel Mugs
 65,9,1/4/9/65,School Uniforms
 66,9,1/4/9/66,Corporate Uniforms
 67,9,1/4/9/67,Work Uniforms
@@ -131,8 +132,8 @@ entity_id,parent_id,path,value
 172,23,1/4/5/23/172,Casual Scarves
 173,23,1/4/5/23/173,Chef Scarves
 176,25,1/4/5/25/176,Dress Shirts
-177,25,1/4/5/25/177,Blouses 
-178,25,1/4/5/25/178,Work Shirts
+177,5,1/4/5/177,Blouses 
+178,25,1/4/5/25/178,Workwear Shirts
 179,25,1/4/5/25/179,Singlets
 180,26,1/4/5/26/180,Sports Shorts
 181,26,1/4/5/26/181,Workwear Shorts
@@ -146,7 +147,7 @@ entity_id,parent_id,path,value
 200,32,1/4/6/32/200,Cooler Bags
 201,32,1/4/6/32/201,Laptop Bags
 202,32,1/4/6/32/202,Satchel Bags
-203,33,1/4/6/115/33/203,Pull Up Banners
+203,115,1/4/6/115/203,Pull Up Banners
 204,33,1/4/6/115/33/204,Vinyl Banners
 205,33,1/4/6/115/33/205,Tear Drop Banners
 206,33,1/4/6/115/33/206,Mesh Banners
@@ -205,18 +206,18 @@ entity_id,parent_id,path,value
 277,51,1/4/6/51/277,Hand Towels
 278,51,1/4/6/51/278,Gym Towels
 279,51,1/4/6/51/279,Golf Towels
-283,8,1/4/8/283,Work & Hi Vis Shirts
-284,8,1/4/8/284,Hi Vis Polo Shirts
-285,8,1/4/8/285,Hi Vis Jackets
-286,8,1/4/8/286,Hi Vis Vests
-287,8,1/4/8/287,Hi Vis T Shirts
-289,8,1/4/8/289,Hi Vis Jumpers
-291,8,1/4/8/291,Hi Vis Singlets
-292,8,1/4/8/292,Work & Hi Vis Hoodies
-296,8,1/4/8/296,Hi Vis Polar Fleece
-298,8,1/4/8/298,Work & Hi Vis Pants
+283,870,1/4/8/870/283,Hi-Vis Work Shirts
+284,870,1/4/8/870/284,Hi-Vis Polo Shirts
+285,870,1/4/8/870/285,Hi-Vis Jackets
+286,870,1/4/8/870/286,Hi-Vis Vests
+287,870,1/4/8/870/287,Hi-Vis T Shirts
+289,870,1/4/8/870/289,Hi-Vis Jumpers
+291,870,1/4/8/870/291,Hi-Vis Singlets
+292,8,1/4/8/292,Work Hoodies
+296,870,1/4/8/870/296,Hi-Vis Polar Fleece
+298,8,1/4/8/298,Work Pants
 299,8,1/4/8/299,Work Shorts
-300,8,1/4/8/300,Work & Hi Vis Overalls
+300,8,1/4/8/300,Work Overalls
 301,65,1/4/9/65/301,Yr 12 Jerseys
 302,65,1/4/9/65/302,School Hats
 303,65,1/4/9/65/303,School Jumpers
@@ -271,7 +272,7 @@ entity_id,parent_id,path,value
 352,81,1/4/9/81/352,Hair Dressing Shirts
 353,81,1/4/9/81/353,Hair Dressing Pants
 354,44,1/4/6/44/354,Carpenters Pencils
-355,47,1/4/6/107/47/355,Sticky Note & Flag Sets
+355,107,1/4/6/107/355,Sticky Note & Flag Sets
 358,82,1/4/6/82/358,Corporate Umbrellas
 359,82,1/4/6/82/359,Kids Umbrellas
 360,48,1/4/6/48/360,Finance Stress Balls
@@ -331,7 +332,7 @@ entity_id,parent_id,path,value
 436,102,1/4/6/102/436,Frisbees
 437,102,1/4/6/102/437,Torpedos
 438,102,1/4/6/102/438,Balls
-439,102,1/4/6/102/439,Puzzles
+439,102,1/4/6/102/439,Games & Puzzles
 440,102,1/4/6/102/440,Fans
 441,102,1/4/6/102/441,Fiddle Cubes
 442,102,1/4/6/102/442,Fidget Spinners
@@ -364,13 +365,13 @@ entity_id,parent_id,path,value
 476,33,1/4/6/115/33/476,Cafe Barriers
 477,33,1/4/6/115/33/477,Metal Signs
 478,39,1/4/6/39/478,Glass Beer Mugs
-481,25,1/4/5/25/481,Polo Shirt
+481,25,1/4/5/25/481,Polo Shirts
 482,25,1/4/5/25/482,T-Shirts
 495,797,1/4/6/797/495,Wedding Stubby Holders
 496,115,1/4/6/115/496,Letterheads
 497,115,1/4/6/115/497,With Compliments
 498,115,1/4/6/115/498,Note Pads
-500,25,1/4/5/25/500,Cuff Links
+500,5,1/4/5/500,Cuff Links
 501,16,1/4/5/16/501,Trench Coats
 502,65,1/4/9/65/502,School Hoodies
 503,65,1/4/9/65/503,School Jackets
@@ -508,7 +509,6 @@ entity_id,parent_id,path,value
 687,120,1/4/6/107/120/687,Wall Calendars
 688,82,1/4/6/82/688,Market Umbrellas
 689,82,1/4/6/82/689,Beach Umbrellas
-690,42,1/4/6/42/690,Paper Coffee Cups
 694,68,1/4/9/68/694,Off-Field Team Wear
 695,68,1/4/9/68/695,Training & Warm-Up Gear
 696,326,1/4/9/68/326/696,Football (AFL) Off-Field Team Wear
@@ -613,7 +613,7 @@ entity_id,parent_id,path,value
 799,797,1/4/6/797/799,Keyring Wedding Favours
 800,797,1/4/6/797/800,Bottle Opener Wedding Favours
 801,797,1/4/6/797/801,Chocolate Wedding Favours
-802,797,1/4/6/797/802,Pen Wedding Favours
+802,797,1/4/6/797/802,Candles Wedding Favours
 803,797,1/4/6/797/803,Glassware Wedding Favours
 804,107,1/4/6/107/804,Office Accessories
 805,97,1/4/6/97/805,Mobile Phone Accessories
@@ -662,11 +662,17 @@ entity_id,parent_id,path,value
 850,847,1/4/6/847/850,Seed Packets
 851,847,1/4/6/847/851,Sprout Pencils
 852,847,1/4/6/847/852,Seed Paper
-853,4,1/4/853,Express Range
-854,853,1/4/853/854,Bags
-855,853,1/4/853/855,Pens
-856,853,1/4/853/856,Drink Bottles
-857,853,1/4/853/857,Keyrings
-858,853,1/4/853/858,Notebooks
-859,853,1/4/853/859,Hand Sanitiser
-860,32,1/4/6/32/860,Drawstring Bags
+853,102,1/4/6/102/853,Slimes
+854,32,1/4/6/32/854,Drawstring Bags
+856,6,1/4/6/856,Reusable Coffee Cups
+857,6,1/4/6/857,Bath Towels
+858,4,1/4/858,Express Range
+865,6,1/4/6/865,Notebooks
+866,858,1/4/858/866,Dummy
+867,4,1/4/867,Eco Friendly
+868,867,1/4/867/868,dummy
+869,8,1/4/8/869,Work Shirts
+870,8,1/4/8/870,Hi-Vis Workwear
+872,870,1/4/8/870/872,Hi-Vis Hoodies
+873,870,1/4/8/870/873,Hi-Vis Pants
+874,870,1/4/8/870/874,Hi-Vis Overalls

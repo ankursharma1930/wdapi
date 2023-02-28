@@ -8,7 +8,6 @@ extend type Query {
     
     category(id: ID! @eq): Category @find @guard
     categories: [Category!]! @all @guard
-    
     category_seo(category_id: String! @eq): CategorySeo @find @guard 
     categoryCount: Int! @count(model: "Category")
 }
@@ -26,9 +25,24 @@ type Category{
 
 type CategorySeo{
     id: ID!
-    category_id: String!
-    alternat_name: String
-    product_keyword: String
+    category_id: String! 
+    alternat_name1: String
+    alternat_name2: String
+    alternat_name3: String
+    alternat_name4: String
+    mark_name1: String
+    mark_name2: String
+    mark_name3: String
+    mark_name4: String
+    product_keyword1: String
+    product_keyword2: String
+    product_keyword3: String
+    product_keyword4: String
+    mark_keyword1: String
+    mark_keyword2: String
+    mark_keyword3: String
+    mark_keyword4: String
+    mark_all: String
     keyword: String
     title: String
     meta_description: String
@@ -37,8 +51,8 @@ type CategorySeo{
 
 extend type Mutation {
     #category upsert
-    deleteCategory(id: ID!): Category @delete @guard
-    upsertCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @upsert @guard
+    #deleteCategory(id: ID!): Category @delete @guard
+    #upsertCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @upsert @guard
     updateCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @update @guard
-    upsertCategorySeo(id: ID, category_id: Int!, alternat_name: String, product_keyword: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert @guard
+    upsertCategorySeo(id: ID, category_id: Int!, alternat_name1: String, product_keyword1: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert @guard
 }
