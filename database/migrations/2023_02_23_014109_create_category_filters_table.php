@@ -15,11 +15,14 @@ class CreateCategoryFiltersTable extends Migration
     {
         Schema::create('category_filters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->tinyText("type");
-            $table->tinyText("style");
-            $table->tinyText("gender_fit");
-            $table->tinyText("material");
+            $table->string("category_id")->unique();
+            $table->tinyText("type")->nullable();
+            $table->tinyText("style")->nullable();
+            $table->string("gender_fit1")->nullable();
+            $table->string("gender_fit2")->nullable();
+            $table->string("gender_fit3")->nullable();
+            $table->string("gender_fit4")->nullable();
+            $table->tinyText("material")->nullable();
             $table->timestamps();
         });
     }

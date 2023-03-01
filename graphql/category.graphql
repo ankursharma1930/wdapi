@@ -9,7 +9,8 @@ extend type Query {
     category(id: ID! @eq): Category @find @guard
     categories: [Category!]! @all @guard
     category_seo(category_id: String! @eq): CategorySeo @find @guard 
-    categoryCount: Int! @count(model: "Category")
+    category_filter(category_id: String! @eq): CategoryFilters @find @guard 
+    categoryCount: Int! @count(model: "Category") @guard
 }
 
 type Category{
@@ -51,6 +52,19 @@ type CategorySeo{
     mark_meta_desc:Int
 }
 
+
+type CategoryFilters{
+    id: ID!
+    category_id: String! 
+    type:String
+    style:String
+    gender_fit1:String
+    gender_fit2:String
+    gender_fit3:String
+    gender_fit4:String
+    material:String
+}
+
 extend type Mutation {
     #category upsert
     #deleteCategory(id: ID!): Category @delete @guard
@@ -83,4 +97,19 @@ extend type Mutation {
         meta_description: String
         mark_meta_desc: Int
         ): CategorySeo @upsert @guard
+
+
+    upsertCategoryFilters(
+        id: ID, 
+        category_id: Int!,
+        type:String
+        style:String
+        gender_fit1:String
+        gender_fit2:String
+        gender_fit3:String
+        gender_fit4:String
+        material:String
+        
+        ): CategoryFilters @upsert @guard
+
 }
