@@ -30,23 +30,25 @@ type CategorySeo{
     alternat_name2: String
     alternat_name3: String
     alternat_name4: String
-    mark_name1: String
-    mark_name2: String
-    mark_name3: String
-    mark_name4: String
+    mark_name1: Int
+    mark_name2: Int
+    mark_name3: Int
+    mark_name4: Int
     product_keyword1: String
     product_keyword2: String
     product_keyword3: String
     product_keyword4: String
-    mark_keyword1: String
-    mark_keyword2: String
-    mark_keyword3: String
-    mark_keyword4: String
+    mark_keyword1: Int
+    mark_keyword2: Int
+    mark_keyword3: Int
+    mark_keyword4: Int
     mark_all: String
     keyword: String
+    mark_meta_key: Int
     title: String
+    mark_title:Int
     meta_description: String
-
+    mark_meta_desc:Int
 }
 
 extend type Mutation {
@@ -54,5 +56,31 @@ extend type Mutation {
     #deleteCategory(id: ID!): Category @delete @guard
     #upsertCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @upsert @guard
     updateCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @update @guard
-    upsertCategorySeo(id: ID, category_id: Int!, alternat_name1: String, product_keyword1: String, keyword: String, title: String, meta_description: String): CategorySeo @upsert @guard
+    upsertCategorySeo(
+        id: ID, 
+        category_id: Int!,
+        alternat_name1: String
+        alternat_name2: String
+        alternat_name3: String
+        alternat_name4: String
+        mark_name1: Int
+        mark_name2: Int
+        mark_name3: Int
+        mark_name4: Int
+        product_keyword1: String
+        product_keyword2: String
+        product_keyword3: String
+        product_keyword4: String
+        mark_keyword1: Int
+        mark_keyword2: Int
+        mark_keyword3: Int
+        mark_keyword4: Int
+        mark_all: Int
+        keyword: String
+        mark_meta_key: Int
+        title: String
+        mark_title: Int
+        meta_description: String
+        mark_meta_desc: Int
+        ): CategorySeo @upsert @guard
 }

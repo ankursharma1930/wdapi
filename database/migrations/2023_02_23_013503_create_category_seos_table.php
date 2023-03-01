@@ -34,8 +34,11 @@ class CreateCategorySeosTable extends Migration
             $table->string("mark_keyword4")->nullable();
             $table->string("mark_all")->nullable();
             $table->tinyText("keyword")->nullable();
+            $table->string("mark_meta_key")->nullable();
             $table->string("title")->nullable();
+            $table->string("mark_title")->nullable();
             $table->tinyText("meta_description")->nullable();
+            $table->string("mark_meta_desc")->nullable();
             $table->timestamps();
         });
     }
