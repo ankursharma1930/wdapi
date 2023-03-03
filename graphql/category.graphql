@@ -65,7 +65,14 @@ type CategoryFilters{
     material:String
 }
 
+
 extend type Mutation {
+    createCategory(
+        name: String! 
+        path:String
+        parent_id:Int
+    ): Category!  @guard @field(resolver: "App\\GraphQL\\Mutations\\CreateCategory")
+
     #category upsert
     #deleteCategory(id: ID!): Category @delete @guard
     #upsertCategory(id: ID!, name: String, link_to: String, link_filter: String, product_name_formula: String, product_name_suffix: String, path:String, parent_id:String): Category @upsert @guard
