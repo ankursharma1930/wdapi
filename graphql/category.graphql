@@ -11,6 +11,7 @@ extend type Query {
     category_seo(category_id: String! @eq): CategorySeo @find @guard 
     category_filter(category_id: String! @eq): CategoryFilters @find @guard 
     categoryCount: Int! @count(model: "Category") @guard
+    category_supplier(category_id: Int! @eq): CategorySupplier @find @guard
 }
 
 type Category{
@@ -63,6 +64,13 @@ type CategoryFilters{
     gender_fit3:String
     gender_fit4:String
     material:String
+}
+
+type CategorySupplier{
+    id: ID!
+    category_id:Int
+    supplier: Supplier! @belongsTo 
+    #category: Category! @belongsTo
 }
 
 
