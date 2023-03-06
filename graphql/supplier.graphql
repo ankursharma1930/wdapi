@@ -4,6 +4,7 @@ extend type Query{
     code: String @eq @rules(apply: ["prohibits:id", "required_without:id"])
    ): Supplier @find @guard
    suppliers: [Supplier!]! @all  @guard 
+   fsuppliers(excludedIds: [ID!]): [Supplier!]!  @guard  @field(resolver: "App\\GraphQL\\Queries\\FsuppliersQuery")
 
 }
 

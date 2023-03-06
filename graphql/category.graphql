@@ -11,7 +11,9 @@ extend type Query {
     category_seo(category_id: String! @eq): CategorySeo @find @guard 
     category_filter(category_id: String! @eq): CategoryFilters @find @guard 
     categoryCount: Int! @count(model: "Category") @guard
-    category_supplier(category_id: Int! @eq): CategorySupplier @find @guard
+    #category_supplier: CategorySupplier @guard @all
+    category_supplier(category_id: Int! @eq): [CategorySupplier!]! @all
+    #suppliers_get(supplier_id: ID!): [CategorySupplier!]! @all
 }
 
 type Category{
@@ -66,13 +68,20 @@ type CategoryFilters{
     material:String
 }
 
-type CategorySupplier{
-    id: ID!
-    category_id:Int
-    supplier: Supplier! @belongsTo 
-    #category: Category! @belongsTo
-}
+# type CategorySupplier{
+#     id: ID!
+#     category_id:Int
+#     #supplier: [Supplier!]! @hasMany(relation: "supplier_id")
+   
+#     #category: Category! @belongsTo
+# }
 
+type CategorySupplier{
+    id:ID!
+    category_id:Int!
+    supplier: Supplier!
+
+}
 
 extend type Mutation {
     createCategory(
