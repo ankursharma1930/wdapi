@@ -68,19 +68,10 @@ type CategoryFilters{
     material:String
 }
 
-# type CategorySupplier{
-#     id: ID!
-#     category_id:Int
-#     #supplier: [Supplier!]! @hasMany(relation: "supplier_id")
-   
-#     #category: Category! @belongsTo
-# }
-
 type CategorySupplier{
     id:ID!
     category_id:Int!
     supplier: Supplier!
-
 }
 
 extend type Mutation {
@@ -136,4 +127,10 @@ extend type Mutation {
         
         ): CategoryFilters @upsert @guard
 
+    createCategorySupplier(
+        supplier_id: ID! 
+        category_id: ID! 
+        
+    ): CategorySupplier! @create @guard
+    deleteCategorySupplier(id: ID!): CategorySupplier @delete @guard
 }
