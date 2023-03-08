@@ -12,7 +12,14 @@ extend type Query {
     category_filter(category_id: String! @eq): CategoryFilters @find @guard 
     categoryCount: Int! @count(model: "Category") @guard
     #category_supplier: CategorySupplier @guard @all
-    category_supplier(category_id: Int! @eq): [CategorySupplier!]! @all
+    category_supplier(
+        id: ID @eq @rules(apply: ["prohibits:category_id", "required_without:category_id"])
+        category_id: Int @eq @rules(apply: ["prohibits:id", "required_without:id"])
+        ): [CategorySupplier!]! @all @guard
+
+    particular_category_supplier(
+        id: ID! @eq
+    ): CategorySupplier @find @guard
     #suppliers_get(supplier_id: ID!): [CategorySupplier!]! @all
 }
 
@@ -71,7 +78,17 @@ type CategoryFilters{
 type CategorySupplier{
     id:ID!
     category_id:Int!
+    lead_time: String
+    default_mark_up:String
+    mark_up_by_quantity:String
+    selected_branding:String
+    website_branding:String
+    supplier_price_break:String
+    min_qty:String
+    web_qty:String
+    brand:String
     supplier: Supplier!
+    
 }
 
 extend type Mutation {
@@ -133,4 +150,10 @@ extend type Mutation {
         
     ): CategorySupplier! @create @guard
     deleteCategorySupplier(id: ID!): CategorySupplier @delete @guard
+
+    updateCategorySupplier(
+        id:ID!
+        category_id: ID! 
+        lead_time: String
+    ): CategorySupplier @update @guard
 }

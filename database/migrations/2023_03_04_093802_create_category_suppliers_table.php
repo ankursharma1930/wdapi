@@ -17,6 +17,15 @@ class CreateCategorySuppliersTable extends Migration
             $table->id();
             $table->unsignedBigInteger("supplier_id");
             $table->unsignedBigInteger("category_id");
+            $table->longText("lead_time")->nullable();
+            $table->string("default_mark_up")->nullable();
+            $table->longText("mark_up_by_quantity")->nullable();
+            $table->longText("selected_branding")->nullable();
+            $table->longText("website_branding")->nullable();
+            $table->longText("supplier_price_break")->nullable();
+            $table->string("min_qty")->nullable();
+            $table->longText("web_qty")->nullable();
+            $table->longText("brand")->nullable();
             $table->timestamps();
         });
     }
