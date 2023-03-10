@@ -148,6 +148,9 @@ extend type Mutation {
         supplier_id: ID! 
         category_id: ID! 
         mark_up_by_quantity: String
+        supplier_price_break: String
+        web_qty:String
+        brand:String
     ): CategorySupplier! @create @guard
     deleteCategorySupplier(id: ID!): CategorySupplier @delete @guard
 
@@ -157,5 +160,9 @@ extend type Mutation {
         lead_time: String
         default_mark_up: String
         mark_up_by_quantity:String
+        supplier_price_break:String
+        min_qty:String
+        web_qty:String
+        brand:String
     ): CategorySupplier @update @guard
 }
